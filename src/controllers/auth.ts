@@ -9,8 +9,8 @@ export const login = async (req: Request, res: Response) => {
   }
 
   try {
-    // const res = await new User().login(email, password);
-    // res.status(200).end();
+    const { user, token } = await new User().login(email, password);
+    res.status(200).json({ user, token });
   } catch (error) {
     res.status(400).json({ message: error });
   }
